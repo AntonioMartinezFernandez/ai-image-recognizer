@@ -22,8 +22,6 @@ make counter category=MAIN_CATEGORY
 # Example: make counter category=nuts
 ```
 
-EXECUTE RECOGNIZER MODE:
-
 ```bash
 # Execute RECOGNIZER mode (replace MAIN_CATEGORY with the type of subjects in the images)
 
