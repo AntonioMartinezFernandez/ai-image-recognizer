@@ -77,10 +77,7 @@ func (lc *Client) CountSubjects(category string, base64Image string) (*string, e
 		return nil, fmt.Errorf("no choices in response")
 	}
 
-	content := llamaResponse.Choices[0].Message.Content
-	cleanContent := strings.ToUpper(strings.ReplaceAll(content, ".", ""))
-
-	return &cleanContent, nil
+	return cleanContent(llamaResponse.Choices[0].Message.Content), nil
 }
 
 func (lc *Client) sendRequest(payload *LlamaRequest) (*[]byte, error) {
@@ -116,4 +113,9 @@ func (lc *Client) sendRequest(payload *LlamaRequest) (*[]byte, error) {
 
 func composeURL(baseURL string) string {
 	return fmt.Sprintf("%s%s", baseURL, "/v1/chat/completions")
+}
+
+func cleanContent(content string) *string {
+	cleanContent := strings.ToUpper(strings.ReplaceAll(content, ".", ""))
+	return &cleanContent
 }
